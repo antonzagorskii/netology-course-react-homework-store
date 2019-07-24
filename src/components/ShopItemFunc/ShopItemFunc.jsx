@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-import ShopItem from '../models/ShopItem'
+import ShopItem from '../../models/ShopItem'
 import './shop_item_func.css'
 
 function ShopItemFunc(props){
@@ -13,7 +13,7 @@ function ShopItemFunc(props){
       <h1>{item.title}</h1>
       <h3>{item.description}</h3>
       <div className="description">{item.descriptionFull}</div>
-      <div className="highlight-window mobile"><div class="highlight-overlay"></div></div>
+      <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
       <div className="divider"></div>
       <div className="purchase-info">
         <div className="price">{item.currency}{item.price}</div>

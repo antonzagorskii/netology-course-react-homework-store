@@ -1,68 +1,104 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## в App.js return
+```jsx
+  return (
+    <div className="App">
+      <div className="ShopItemClass">
+        <div className="container">
+          <div className="background-element">
+          </div>
+          <div className="highlight-window">
+            <div className='highlight-overlay'></div>
+          </div>
+          <div className="window">
+            <ShopItemClass item={item} />
+          </div>
+        </div>
+      </div>
 
-## Available Scripts
+      
+      <div className="ShopItemFunc">
+        <div className="container">
+          <div className="background-element">
+          </div>
+          <div className="highlight-window">
+            <div className='highlight-overlay'></div>
+          </div>
+          <div className="window">
+            <ShopItemFunc item={item} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+```
 
-In the project directory, you can run:
+## ShopItemClass.jsx
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types'
 
-### `npm start`
+import ShopItem from '../../models/ShopItem'
+import './shop_item_class.css'
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+class ShopItemClass extends React.Component {
+  render(){
+    const {item} = this.props
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    return (
+      <div className="main-content">
+        <h2>{item.brand}</h2>
+        <h1>{item.title}</h1>
+        <h3>{item.description}</h3>
+        <div className="description">{item.descriptionFull}</div>
+        <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+        <div className="divider"></div>
+        <div className="purchase-info">
+          <div className="price">{item.currency}{item.price}</div>
+          <button>Добавить в корзину</button>
+        </div>
+      </div>
+    );
+  }
+}
 
-### `npm test`
+ShopItemClass.propTypes = {
+  item: PropTypes.instanceOf(ShopItem).isRequired
+}
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+export default ShopItemClass;
+```
 
-### `npm run build`
+## ShopItemFunc.jsx
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types'
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+import ShopItem from '../../models/ShopItem'
+import './shop_item_func.css'
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+function ShopItemFunc(props){
+  const { item } = props;
+  
+  return (
+    <div className="main-content">
+      <h2>{item.brand}</h2>
+      <h1>{item.title}</h1>
+      <h3>{item.description}</h3>
+      <div className="description">{item.descriptionFull}</div>
+      <div class="highlight-window mobile"><div class="highlight-overlay"></div></div>
+      <div className="divider"></div>
+      <div className="purchase-info">
+        <div className="price">{item.currency}{item.price}</div>
+        <button>Добавить в корзину</button>
+      </div>
+    </div>
+  );
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ShopItemFunc.propTypes = {
+  item: PropTypes.instanceOf(ShopItem)
+}
 
-### `npm run eject`
+export default ShopItemFunc;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
